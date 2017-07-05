@@ -121,7 +121,6 @@ function Lis($arr) {
     }
     print_r($dp);
     print_r($pre);
-    echo $max;
 }
 
 $arr = array(3,1,2,5,4);

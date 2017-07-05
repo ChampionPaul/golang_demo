@@ -83,12 +83,16 @@ class LRU {
             $this->detach($node);
             $this->attach($this->head, $node);
         } else {
-        //2:key不存在，创建新结点，插入到头部, 填充到hashmap
+        //2:key不存在，创建新结点，插入到头部, 填充到hashmap,如果加入结点后，hashmap超过了规定阈值，删掉尾结点
             $this->hashmap[$key] = $node;
             $node = new Node();
             $node->setKey($key);
             $node->setData($data);
             $this->attach($this->head, $node);
+            if (count($this->hashmap) > $this->capacity) {
+                $this->detach($this->tail->getPre());
+                unset($this->hashmap[$this->tail->getPre()->getKey()]);
+            }
         }
         return true;
     }
