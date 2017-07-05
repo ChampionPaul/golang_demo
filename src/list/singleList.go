@@ -19,6 +19,13 @@ type Lists struct {
 	head *Node
 }
 
+func NewNode(data interface{}, point *Node) *Node {
+	node := &Node{}
+	node.data = data
+	node.next = point
+	return node
+}
+
 func NewLists() *Lists {
 	l := &Lists{}
 	l.len = 0
@@ -40,10 +47,10 @@ func CreateList(n int) *Lists {
 func GetVal(l *Lists) {
 	tmp := l.head
 	for tmp.next != nil {
-		fmt.Println(tmp.data)
+		fmt.Println(tmp)
 		tmp = tmp.next
 	}
-	fmt.Println(tmp.data)
+	fmt.Println(tmp)
 }
 
 //追加元素
